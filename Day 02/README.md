@@ -217,9 +217,217 @@ console.log(strConcat) // 30 days of javascript
   ```
 - ***replace()***: method returns a new string with the replaced value(s). It does not modify the original string.
   ```js
+  // Syntax
   string.replace(oldsubstring, newsubstring)
   ```
   ```js
   let string = '30 Days Of JavaScript'
   console.log(string.replace('JavaScript', 'Python')) // 30 Days Of Python
   ```
+- ***charAt()***: method returns the character at a specified index in a string. Indexing start from `0` to `string.length - 1`
+  ```js
+  // Syntax
+  string.charAt(index)
+  ```
+  ```js
+  let string = '30 Days of JavaScript'
+  console.log(string.charAt(0)) // 3
+  console.log(string.charAt(string.length - 1)) // t
+  ```
+- ***charCodeAt()***: method returns the Unicode of the character at a specified index in a string.
+  ```js
+  // Syntax
+  string.charCodeAt(index)
+  ```
+  ```js
+  let string = '30 Days of JavaScript'
+  console.log(string.charCodeAt(5)) // 121 ASCII code of 'y'
+  console.log(string.charCodeAt(string.length - 1)) // 116 ASCII code of 't'
+  ```
+- ***indexOf()***: method returns the position of the first occurrence of a value in a sting. If the value is not found, it returns -1. It is case-sensitive.
+  ```js
+  // Syntax
+  string.indexOf(substring)
+  ```
+  ```js
+  let string = '30 Days Of JavaScript'
+  console.log(string.indexOf('3')) // 0
+  console.log(string.indexOf('days')) // -1
+  console.log(string.indexOf('JavaScript')) // 11
+  ```
+- ***lastIndexOf()***: method returns the index of the last occurrence of a specified value in a string. It searches the string from the end to the beginning, returning the index from the beginning (position 0). If the value is not found, it returns -1. The method is case-sensitive.
+  ```js
+  // Syntax
+  string.lastIndexOf()
+  ```
+  ```js
+  let string = 'I love JavaScript. If you do not love JavaScript what else can you love.'
+  console.log(string.lastIndexOf('love'))       // 67
+  console.log(string.lastIndexOf('you'))        // 63
+  console.log(string.lastIndexOf('JavaScript')) // 38
+  ```
+- ***concat()***: method joins two or more strings. It does not change the existing string. It returns a new string.
+  ```js
+  // Syntax
+  string.concat(substring, substring, substring)
+  ```
+  ```js
+  let days = '30 Days'
+  let language = 'JavaScript'
+  let string = days.concat(" of ", language);
+  console.log(string) // 30 Days of JavaScript
+  ```
+- ***startsWith()***: method returns `true` if a string starts with a specified string, otherwise it returns `false`. It is case-sensitive.
+  ```js
+  // Syntax
+  string.startWith(substring)
+  ```
+  ```js
+  let string = 'I love JavaScript. If you do not love JavaScript what else can you love'
+  console.log(string.startsWith('love')) // true
+  console.log(string.startsWith('Love')) // false
+
+  let language = 'JavaScript'
+  console.log(language.startsWith('Java')) // true
+  console.log(language.startsWith('script')) // false
+  ```
+- ***endsWith()***: method returns `true` if a string ends with a specified string., otherwise it returns `false`. It is case-sensitive.
+  ```js
+  string.endsWith(substring)
+  ```
+  ```js
+  let string = 'I love JavaScript. If you do not love JavaScript what else can you love';
+  console.log(string.endsWith('javascript')) // false
+  console.log(string.endsWith('JavaScript')) // true
+  ```
+- ***search()***: method takes a substring as an argument and returns the `index` of the first match, else return -1. The search value can be a string or a regular expression pattern. It is a case-sensitive.
+  ```js
+  string.search(substring)
+  ```
+  ```js
+  let string = 'I love JavaScript. If you do not love JavaScript what else can you love';
+  console.log(string.search('love')) // 2
+  console.log(string.search(/javascript/gi))  // 7
+  ```
+  - `g` for Global search. It searches for all occurrences of the pattern in the string.
+  - `i` for Case-insensitive search. It performs a case-insensitive search for the pattern.
+- ***match()***: method takes a substring or a regular expression pattern as an argument and returns an array with the matches found. If no match is found, it returns null. The regular expression pattern is enclosed between two / signs.
+  ```js
+  // Syntax
+  string.match(substring)
+  ```
+  ```js
+  let string = 'love'
+  let patternOne = /love/     // with out any flag
+  let patternTwo = /love/gi   // g - means to search in the whole text, i - case insensitive
+  ```
+  ```js
+  let string = 'I love JavaScript. If you do not love JavaScript what else can you love.'
+  console.log(string.match('love'))
+  ```
+  ```shell
+  ["love", index: 2, input: "I love JavaScript. If you do not love JavaScript what else can you love.", groups: undefined]
+  ```
+  ```js
+  let regExPattern = /love/gi
+  console.log(string.match(regExPattern)) // ["love", "love", "love"]
+  ```
+  - Lets extract numbers from text using a regular expression.
+  ```js
+  let txt = 'In 2019, I ran 30 Days of Python. Now, in 2020 I am super exited to start this challenge'
+  let regEx = /\d+/
+
+  // d with escape character means d not a normal d instead acts a digit
+  // + means one or more digit numbers,
+  // if there is g after that it means global, search everywhere.
+
+  console.log(txt.match(regEx)) // ["2", "0", "1", "9", "3", "0", "2", "0", "2", "0"]
+  console.log(txt.match(/\d+/g)) // ["2019", "30", "2020"]
+  ```
+- ***repeat()***: method takes a number as an argument and returns a new string consisting of the original string repeated the specified number of times. It does not modify the original string.
+  ```js
+  // Syntax
+  string.repeat(n) // 'n' is natural number
+  ```
+  ```js
+  let language = 'JavaScript'
+  console.log(language.repeat(5)) //JavaScriptJavaScriptJavaScriptJavaScriptJavaScript
+  ```
+
+## Checking Data Types and Casting
+
+### Checking Data Types
+> To check the datatype of a certain variable we use the `typeof` method
+```js
+  let days = 30
+  let language = 'JavaScript'
+  let isLearning = true
+  let noValue = null
+  let notDefine
+
+  console.log(typeof days) // number
+  console.log(typeof language) // string
+  console.log(typeof isLearning) // boolean
+  console.log(typeof noValue) // object
+  console.log(typeof notDefine) // undefined
+  console.log(typeof NaN) // number
+```
+
+### Changing Data Type (Casting)
+> Casting converting one data type to another data type. We use `parseInt()`, `parseFloat()`, `Number()`, `+` sign, `str()`. When we do arithmetic operations string numbers should be first converted to integer or float if not it returns an error.
+
+**String to Int**: Converting a string number to a numerical value can be achieved using several methods:
+- `parseInt()`
+  ```js
+  let number = '10'
+  let numberInt = parseInt(number)
+  console.log(typeof number) // string
+  console.log(typeof numberInt) // number
+  ```
+- `Number()`
+  ```js
+  let number = '10'
+  let numberInt = Number(number)
+  console.log(typeof number) // string
+  console.log(typeof numberInt) // number
+  ```
+- Plus sign (`+`)
+  ```js
+  let number = '10'
+  let numberInt = +number
+  console.log(typeof number) // string
+  console.log(typeof numberInt) // number
+  ```
+
+**String to Float**: Converting a string float number to a floating-point numerical value can be accomplished using various methods:
+- `parseFloat()`
+  ```js
+  let number = '3.1415'
+  let numberFloat = parseFloat(number)
+  console.log(number) // string
+  console.log(numberFloat) // number
+  ```
+- `Number()`
+  ```js
+  let number = '3.1415'
+  let numberFloat = Number(number)
+  console.log(typeof number) // string
+  console.log(typeof numberFloat) // number
+  ```
+- Plus sign (`+`)
+  ```js
+  let number = '3.1415'
+  let numberFloat = +number
+  console.log(typeof number) // string
+  console.log(typeof numberFloat) // number
+  ```
+
+**Float to Int**: To convert floating-point numbers to integers, we use the `parseInt()` method.
+```js
+let floatingNumber = '9.81'
+let floatingToIntNumber = parseInt(floatingNumber)
+console.log(floatingNumber) // 9.81
+console.log(floatingToIntNumber) // 9
+```
+---
+> Thank you for reading the summary of ***Introduction***. Please proceed to the exercises section and complete them on your own. If you need **hints** or **solutions**, refer to the `Exercises.js` file.
