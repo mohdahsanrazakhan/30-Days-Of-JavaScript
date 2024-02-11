@@ -4,7 +4,7 @@
 let firstName = "Mark";
 let lastName = "Albatross";
 let country = "India";
-let city = "Pryj"
+let city = "Delhi"
 let age = 21;
 let isMarried = false;
 let year = 2022;
@@ -23,16 +23,14 @@ console.log(parseInt(Math.ceil('9.8')));
 
 // Question 4: Boolean value is either true or false.
 // Write three JavaScript statement which provide truthy value.
-let lightOn = true;
-console.log(lightOn);
-console.log(3 > 1);
-console.log(-10 > -100);
+let isTrutly = true
+let nonZeroIsTrutly = 50
+let stringIsTrutly = 'happy'
 
 // Write three JavaScript statement which provide falsy value.
-let lightOff = false;
-console.log(lightOff);
-console.log(10 < 5);
-console.log(-50 > -15);
+let isFalsy = false
+let zeroIsFalsy = 0
+let emptyStringIsFalsy = ''
 
 // Question 5: Figure out the result of the following comparison expression first without using console.log(). After you decide the result confirm it using console.log()
 console.log(4 > 3) // true
@@ -129,17 +127,43 @@ console.log(`Area: ${areaOfCicle}\nCircumference: ${circumferenceOfCircle}`);
 // Formula: y = mx+c
 let y = 2 * 0 + (-2) // if x = 0;
 let x = 2 / 2 // if y = 0;
-console.log(`(${x}, 0)`);
-console.log(`(0, ${y})`);
+console.log(`(${x}, 0)`); // (x1, y1) -> (1,0)
+console.log(`(0, ${y})`); // (x2, y2) -> (0,-2)
+$m = (-2-0) / (0 - 1)
+console.log($m) // 2
 
 // Question 6: Slope is m = (y2-y1)/(x2-x1). Find the slope between point (2, 2) and point(6,10)
 let x1 = 2, y1 = 2, x2 = 6, y2 = 10, m;
 m = (y2 - y1) / (x2 - x1);
-console.log(m);
+console.log(m); // 2
 
 // Question 7: Compare the slope of above two questions.
+console.log($m === m) // true
+console.log($m !== m) // false
 
-// Question 8: Calculate the value of y (y = x2 + 6x + 9). Try to use different x values and figure out at what x value y is 0.
+// Question 8: Calculate the value of y (y = x^2 + 6x + 9). Try to use different x values and figure out at what x value y is 0.
+// Function to calculate y for a given x
+function calculateY(x) {
+  return Math.pow(x,2) + 6 * x + 9;
+}
+
+// Function to find x values where y is 0
+function findXValueForZeroY() {
+  let xValues = [];
+
+  // Calcuate y for x values from -100
+  for(let x = -100; x <= 100; x++) {
+    if(calculateY(x) === 0)
+      xValues.push(x)
+    else
+      continue;
+    x++;
+  }
+  console.log(xValues) // [-3]
+}
+
+// Invoking Function
+findXValueForZeroY()
 
 // Question 9: Writ a script that prompt a user to enter hours and rate per hour. Calculate pay of the person?
 /*
