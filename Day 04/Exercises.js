@@ -205,7 +205,10 @@ switch (true) {
 }
 
 // Question 2: Write a program which tells the number of days in a month, now consider leap year.
+
 let year = prompt("Enter year:");
+
+// Way No. 1:
 if (year % 4 == 0) {
     if (year % 100 == 0) {
         if (year % 400 == 0) {
@@ -222,3 +225,9 @@ if (year % 4 == 0) {
 else {
     console.log(`${year} is not a leap year.`);
 }
+
+// Way No. 2:
+function isLeapYear(year) {
+    return (year % 100 === 0) ? (year % 400 === 0) : (year % 4 === 0);
+}
+console.log(isLeapYear(year));
