@@ -1,26 +1,5 @@
-const countries = [
-    'Albania',
-    'Bolivia',
-    'Canada',
-    'Denmark',
-    'Ethiopia',
-    'Finland',
-    'Germany',
-    'Hungary',
-    'Ireland',
-    'Japan',
-    'Kenya'
-]
-
-const webTechs = [
-    'HTML',
-    'CSS',
-    'JavaScript',
-    'React',
-    'Redux',
-    'Node',
-    'MongoDB'
-]
+import countries from "../countries.mjs";
+import webTechs from "../web_techs.mjs";
 
 const mernStack = ['MongoDB', 'Express', 'React', 'Node']
 
@@ -43,7 +22,6 @@ do {
     console.log(j);
     j++;
 } while (j <= 10);
-// Using 
 
 // Question 2: Iterate 10 to 0 using for loop, do the same using while and do while loop
 // Using for loop:-
@@ -141,6 +119,15 @@ for (let i = 1; i <= 100; i += 2) {
 }
 
 // Question 9: Use for loop to iterate from 0 to 100 and print only prime numbers
+let count = 0
+for(let i = 2; i <= 100; i++) {
+    for(let j = 1; j <= i; j++) {
+        if(i % j == 0) count++
+    }
+    if(count == 2)
+    console.log(i)
+    count = 0;
+}
 
 // Question 10: Use for loop to iterate from 0 to 100 and print the sum of all numbers.
 // The sum of all numbers from 0 to 100 is 5050.
@@ -165,28 +152,28 @@ console.log(`The sum of all evens from 0 to 100 is ${evenSum} And the sum of all
 
 // Question 12: Use for loop to iterate from 0 to 100 and print the sum of all evens and the sum of all odds. Print sum of evens and sum of odds as array
 //   [2550, 2500]
-let arrNum = [evenSum, oddSum];
-console.log(arrNum);
+let arrayOfSumOfOddEven = [evenSum, oddSum];
+console.log(arrayOfSumOfOddEven);
 
-// Question : Develop a small script which generate array of 5 random numbers
-let randArr = 0;
+// Question 13: Develop a small script which generate array of 5 random numbers
+let arrayOfFiveRandomNumber = [];
 for (let i = 0; i < 5; i++) {
     let randNum = Math.round(Math.random() * 100);
-    randArr[i] = randNum;
+    arrayOfFiveRandomNumber[i] = randNum;
 }
-console.log(randArr);
+console.log(arrayOfFiveRandomNumber);
 
-// Question : Develop a small script which generate array of 5 random numbers and the numbers must be unique
-let uniqueRandArr = [];
+// Question 14: Develop a small script which generate array of 5 random numbers and the numbers must be unique
+let fiveUniqueRandomNumber = [];
 for (let i = 0; i < 5; i++) {
-    let rand = Math.round(Math.random() * 100);
-    if (uniqueRandArr.indexOf(rand) === -1)
-        uniqueRandArr.push(rand);
+    let randomNum = Math.round(Math.random() * 100);
+    if (fiveUniqueRandomNumber.indexOf(randomNum) === -1)
+        fiveUniqueRandomNumber.push(randomNum);
 }
-console.log(uniqueRandArr);
+console.log(fiveUniqueRandomNumber);
 
 
-// Question : Develop a small script which generate a six characters random id: 5j2khz
+// Question 15: Develop a small script which generate a six characters random id: 5j2khz
 const sets =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 let id = '';
@@ -226,22 +213,24 @@ console.log(`#${hexCode}`);
 let red = Math.round(Math.random() * 255);
 let green = Math.round(Math.random() * 255);
 let blue = Math.round(Math.random() * 255);
-console.log(`rbh(${red},${green},${blue})`);
+console.log(`rgb(${red},${green},${blue})`);
 
 
 // Question 4: Using the above countries array, create the following new array.
 // ["ALBANIA", "BOLIVIA", "CANADA", "DENMARK", "ETHIOPIA", "FINLAND", "GERMANY", "HUNGARY", "IRELAND", "JAPAN", "KENYA"]
-let newContries = [];
-for (let i = 0; i < countries.length; i++) {
-    newContries[i] = countries[i].toUpperCase();
+let newCountries = [];
+
+for(const country of countries) {
+    newCountries.push(country.toUpperCase())
 }
-console.log(newContries);
+console.log(newCountries)
 
 // Question 5: Using the above countries array, create an array for countries length'.
 // [7, 7, 6, 7, 8, 7, 7, 7, 7, 5, 5]
 let countriesLength = [];
-for (let i = 0; i < countries.length; i++) {
-    countriesLength[i] = countries[i].length;
+
+for(const country of countries) {
+    countriesLength.push(country.length)
 }
 console.log(countriesLength);
 
@@ -261,26 +250,24 @@ console.log(countriesLength);
 //   ['Kenya', 'KEN', 5]
 //  ]
 let setsCountries = [];
-for (let i = 0; i < countries.length; i++) {
-    let code = countries[i].slice(0, 3);
-    setsCountries[i] = [(countries[i]), code.toUpperCase(), countries[i].length];
+
+for(const country of countries) {
+    let code = country.slice(0,3);
+    setsCountries.push([country, code.toUpperCase(), country.length])
 }
-console.log(setsCountries);
+console.log(setsCountries)
 
 // Question 7: In above countries array, check if there is a country or countries containing the word 'land'. If there are countries containing 'land', print it as array. If there is no country containing the word 'land', print 'All these countries are without land'.
 // ['Finland','Ireland', 'Iceland']
 let landContries = [];
-for (let i = 0; i < countries.length; i++) {
-    if (countries[i].match(/'land'/g)) {
-        landContries.push(countries[i]);
-    }
-    else {
-        console.log('All these countries are without land.')
-    }
-}
+landContries = countries.filter(country => country.toLowerCase().includes('land'))
+landContries.length > 0 ? console.log(landContries) : console.log('All these countries are without land.')
 
 // Question 8: In above countries array, check if there is a country or countries end with a substring 'ia'. If there are countries end with, print it as array. If there is no country containing the word 'ai', print 'These are countries ends without ia'.
 // ['Albania', 'Bolivia','Ethiopia']
+let iaCountries = []
+iaCountries = countries.filter(country => country.toLowerCase().match(/\w+ia\b/g))
+console.log(iaCountries)
 
 // Question 9: Using the above countries array, find the country containing the biggest number of characters.
 // Ethiopia
@@ -295,6 +282,8 @@ console.log(largestChar);
 
 // Question 10: Using the above countries array, find the country containing only 5 characters.
 // ['Japan', 'Kenya']
+const fiveCharacters = countries.filter(country => country.length === 5)
+console.log(fiveCharacters)
 
 // Question 11: Find the longest word in the webTechs array
 var longestSize = 0, longestWord = '';
@@ -350,25 +339,24 @@ const fullStack = [
     ['Node', 'Express', 'MongoDB']
 ];
 let fStack = fullStack.flat();
-for (let i = 0; i < fStack.length; i++) {
-    console.log(fStack[i]);
+for(const stack of fStack) {
+    console.log(stack);
 }
 
 
 /* Exercises: Level 3 */
-const countriesArray = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic", "Chad", "Chile", "China", "Colombi", "Comoros", "Congo (Brazzaville)", "Congo", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor (Timor Timur)", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia, The", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia and Montenegro", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
 
 // Question 1: Copy countries array(Avoid mutation)
 let immuteCountries = [];
-for (let i = 0; i < countriesArray.length; i++) {
-    immuteCountries[i] = countriesArray[i];
+for (const country of countriesArray) {
+    immuteCountries.push(country);
 }
 console.log(immuteCountries);
 
 // Question 2: Arrays are mutable. Create a copy of array which does not modify the original. Sort the copied array and store in a variable sortedCountries
 let sortedCountries = [];
-for (let i = 0; i < immuteCountries.length; i++) {
-    sortedCountries[i] = immuteCountries[i];
+for (const country of immuteCountries) {
+    sortedCountries.push(country);
 }
 console.log(sortedCountries.sort());
 
@@ -376,29 +364,36 @@ console.log(sortedCountries.sort());
 console.log(webTechs.sort());
 console.log(mernStack.sort());
 
-// Question 4: Extract all the countries contain the word 'land' from the countries array and print it as array
+// Question 4: Extract all the countries contain the word 'ia' from the countries array and print it as array
+const iaSuffixCountry = countries.filter(country => country.toLowerCase().match(/\w+ia\b/g))
+console.log(iaSuffixCountry)
 
 // Question 5: Find the country containing the hightest number of characters in the countries array
-var len = 0, freqCountry = '';
-for (let i = 0; i < immuteCountries.length; i++) {
-    if (immuteCountries[i].length > len) {
-        len = immuteCountries[i].length;
-        freqCountry = immuteCountries[i];
+var maxLength = 0, highestCharactersCountry = '';
+
+for(const country of countries) {
+    if (country.length > maxLength) { 
+        maxLength = country.length
+        highestCharactersCountry = country
     }
 }
-console.log(freqCountry);
+console.log(highestCharactersCountry);
 
-// Extract all the countries containing only four characters from the countries array and print it as array
+// Question 6: Extract all the countries contain the word 'land' from the countries array and print it as array
+const landSuffixCountry = countries.filter(country => country.toLowerCase().includes('land'))
+console.log(landSuffixCountry)
+
+// Question 7: Extract all the countries containing only four characters from the countries array and print it as array
 let smallCountries = [];
-for (let i = 0; i < immuteCountries.length; i++) {
-    if (immuteCountries[i].length === 4) {
-        smallCountries = immuteCountries[i];
-    }
+
+for(const country of countries) {
+    country.length === 4 ? smallCountries.push(country) : ''
 }
 console.log(smallCountries);
 
-// Extract all the countries containing two or more words from the countries array and print it as array
+// Question 8: Extract all the countries containing two or more words from the countries array and print it as array
 let moreWord = [];
+// Way 1
 for (let i = 0; i < immuteCountries.length; i++) {
     if ((immuteCountries[i].match(/(\w+)/g).length) >= 2) {
         moreWord.push(immuteCountries[i]);
@@ -406,10 +401,16 @@ for (let i = 0; i < immuteCountries.length; i++) {
 }
 console.log(moreWord);
 
-// Reverse the countries array and capitalize each country and stored it as an array
-let revCountries = [];
-for (let i = 0; i < immuteCountries.length; i++) {
-    immuteCountries[i] = immuteCountries[i].toUpperCase();
-    revCountries = immuteCountries.reverse();
+// Way 2
+const regExPattern = /\w+\s\w+/g
+const moreWords = countries.filter(country => country.match(regExPattern))
+
+console.log(moreWords)
+
+// Question 9: Reverse the countries array and capitalize each country and stored it as an array
+const reverseCountries = countries.reverse();
+let capCountries = []
+for(const country of reverseCountries) {
+    capCountries.push(country.toUpperCase())
 }
-console.log(revCountries);
+console.log(capCountries)
