@@ -1,7 +1,7 @@
 # Loops -
 
 ## Loops
-A loop is used to run the piece of code repeatedly until a certain condition is met.
+> A loop is used to run the piece of code repeatedly until a certain condition is met.
 
 - In JavaScript, there are 5 types of loops:
   - `for` loop
@@ -157,6 +157,6 @@ for(let i = 0; i <= 5; i++) {
 // Output: 0 1 2 4 5
 ```
 ---
-> Thank you for reading the summary of ***Introduction***. Please proceed to the exercises section and complete them on your own. If you need **hints** or **solutions**, refer to the ***[Exercises.js](https://github.com/mohdahsanrazakhan/30-Days-Of-JavaScript/blob/main/Day%2006/Exercises.js)*** file.
+> Thank you for reading the summary of ***Introduction***. Please proceed to the exercises section and complete them on your own. If you need **hints** or **solutions**, refer to the ***[Exercises.js](https://github.com/mohdahsanrazakhan/30-Days-Of-JavaScript/blob/main/Day%2006/Exercises.mjs)*** file.
 
 [< Previous](https://github.com/mohdahsanrazakhan/30-Days-Of-JavaScript/tree/main/Day%2005) | [Next >](https://github.com/mohdahsanrazakhan/30-Days-Of-JavaScript/tree/main/Day%2007)
